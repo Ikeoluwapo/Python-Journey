@@ -1,0 +1,263 @@
+### Question 1
+
+#Create a program that finds the largest of 3 numbers entered by the user
+first_num = int(input("Enter first number\n"))
+second_num = int(input("Enter second number\n"))
+third_num = int(input("Enter third number\n"))
+
+if first_num > second_num  and first_num > third_num:
+    print(f"The highest number among the three is {first_num}")
+elif second_num > first_num and second_num > third_num:
+    print(f"The highest number among the three is {second_num}")
+else:
+    print(f"The highest number among the three is {third_num}")
+
+### Question 2
+
+# Create a function that extracts the last four digits from the input entered by the user
+
+def extract_d(digits):
+    if len(digits) >= 4:
+        return digits[-4:]
+    else: 
+        return ( )# I want it to return nothing so when the function is ran and printed it does not give out two different sentences
+
+user = input("Enter your phone number: ")
+
+extract_d(user)
+print("The Last Four Digits of the User's number are", extract_d(user))
+
+### Question 3
+
+#Create a program that accepts 2 numbers and an operator 
+#eg. 5 6, + then perform an operation based on what the user enters eg 5 + 6 
+#if the user enters 2,8, * it should return 2 * 8 and show the answer
+
+First_num = int(input("Enter first number: "))
+Sec_num = int(input("Enter second number: "))
+Operator = input("Enter an operator: *, /, +, -,%, //")
+
+if Operator == "*":
+    answer = First_num * Sec_num
+elif Operator == "/":
+    answer = First_num / Sec_num
+elif Operator == "+":
+    answer = First_num + Sec_num
+elif Operator == "%":
+    answer = First_num % Sec_num
+elif Operator == "//":
+    answer = First_num // Sec_num
+else:
+    answer = First_num - Sec_num
+
+print (f"{First_num} {Operator} {Sec_num} = {answer}")
+
+### Question 4
+
+#create a program that takes a score and shows the grade based on the score
+#eg.
+#90 - 100 ("Grade A")
+#70 - 89  ("Grade B")
+#50 - 69 ("Grade c")
+#30 - 49 ("Grade E")
+#0 - 29  ("Grade E")
+
+score = int(input("Enter your score: "))
+if score >=90 and score <=100:
+    print("Grade A")
+elif score >=70 and score <= 89:
+    print("Grade B")
+elif score >=50 and score <= 69:
+    print("Garde C")
+elif score >= 30 and score <= 49:
+    print("Grade D")
+else:
+    print("Grade E")
+
+### Question 5
+
+#create a guessing game. generate a number that is stored in a variable and let the user guess the number.
+#If they guess correctly, tell them they are correct. 
+#if higher than the number tell them it is higher. if lower tell them their guess is lower.
+import random
+num = random.randint(20,30)
+guess = int(input("Guess a number between 20 and 30:\n"))
+print(f"{num} is the secret number")
+if guess == num:
+    print("You are correct")
+elif guess > num:
+    print("Your guess is higher than the secret number")
+else:
+    print("Your guess is lower than the secret number")
+
+### Question 6
+
+#Write a program that prints the integers from 1 to 100. But for multiples of three print 
+#"Fizz" instead of the number, and the multiples of five print "Buzz". 
+#For numbers that are multiples of both three and five print "FizzBuzz".
+for number in range(1,101):
+    if number % 3 == 0 and number % 5 == 0:
+        print("FizzBuzz")
+    elif number % 3 == 0 and number % 5 != 0:
+        print("Fizz")
+    elif number % 3 != 0 and number % 5 == 0:
+        print("Buzz")
+    else:
+        print(number)
+
+### Question 7
+
+# info = [1,1,1,1,2,2,3,3,3,3,4,5]
+# bring out unique values from the code above.
+info = [1,1,1,1,2,2,3,3,3,3,4,5]
+set(info) #can use set or nunique
+
+#Anither way to solve
+#remember to use another variable
+info = [1,1,1,1,2,2,3,3,3,3,4,5]
+empty = []
+for i in info:
+    if i not in empty:
+        empty.append(i)
+empty
+    
+
+#using while loop
+empty = [] #this is a strange way of using while loop. It negates the use of initialization, and increment
+info = [1,1,1,1,2,2,3,3,3,3,4,5]
+while info:
+    item = info.pop(0)
+    if item not in empty:
+        empty.append(item)
+print(empty)
+
+#Write a Python program that uses a while loop to print numbers from 1 to 10.
+
+num = 1
+while num <= 10:
+    print(num)
+    num += 1
+    
+
+#Create a Python program that uses a while loop to find the sum of all even numbers from 1 to 50.
+
+i = 1
+sum_even = 0
+while i <= 51:
+    if i % 2 == 0:
+        sum_even += i
+    i += 1
+print(sum_even)
+       
+
+
+# Write a Python program that asks the user to guess a secret number between 1 and 100. 
+#Use a while loop to repeatedly prompt the user for guesses until they guess correctly.
+
+import random
+n_guess = 3
+secret_num = random.randint(1, 101)
+
+while secret_num:
+  
+    guess = int(input("Enter a number between 1 and 100:\n"))
+    if guess == secret_num:
+        print ("You guessed correctly")
+        break
+    else:
+        n_guess -= 1
+        if n_guess > 0:
+            print ("Try again")
+        else:
+            print (" You've used up your trials")
+            break
+        
+
+# Create a Python program that asks the user to enter a password. 
+#Use a while loop to keep prompting the user for a password until it matches a predefined correct password.
+
+
+correct_pass = "Des21#"
+no_guess = 3
+while no_guess > 0:
+    user= input("Enter your password: ")
+    
+    if user == correct_pass:
+        print("Correct password")
+        break
+    else:
+        no_guess -= 1
+        if no_guess > 0:
+            print("Wrong password, you have three more trials: ")
+        else:
+            print("You've used up your trial")
+            break
+        #if I do not end this it would keep going to infinity
+
+#Write a Python program that generates and prints the first 20 numbers in the Fibonacci sequence using a while loop.
+#for the fibonacci sequence you need two numbers to start with. the last two keeps adding up
+numbers = [0, 1]
+while len(numbers) <= 20:
+    fibonacci_num = numbers[-1] + numbers[-2]
+    numbers.append(fibonacci_num)
+print(numbers)
+
+#Create a menu-driven Python program that allows the user to perform different operations 
+#(e.g., addition, subtraction, multiplication, division) 
+#on two numbers using a while loop to repeatedly display the menu until the user chooses to exit.
+
+
+
+### Question 8
+
+#record = "this is the time to attend python training"
+#bring out the words that start with 't'
+
+record = "this is the time to attend python training"
+rec = record.upper().split()
+for  i in rec:
+    if i.startswith("T"):
+        print(i)
+
+### Question 9
+
+#words = 'Python is not hard. You agree with me right?'
+#Print every word in this sentence above that has an even number of letters
+words = 'Python is not hard. You agree with me right?'
+word = words.split(" ")
+
+for i in split_word:
+    word_splt = i.rstrip("?").rstrip(".")
+    if len(word_splt) % 2 == 0:
+        print(word_splt)
+
+### Question 10
+
+#numbers = [1,2,3,4,5]
+#Write the code that will sum all the items inside numbers
+
+numbers = [1,2,3,4,5]
+sum_num = 0
+for i in numbers:
+    sum_num += i
+print(sum_num)
+
+### Additional Assignment
+
+#create multiplication table
+numb = 2
+num = 1
+while num <= 12:
+    print(f"{numb} x {num} = {num * numb}")
+    num += 1
+
+#using function
+def mult_table(x):
+    for i in range(1,13):
+        print (f"{x} X {i} = {x * i}")
+
+mult_table(3)
+
+#using one line of code for function
+list(map(lambda x: x * 2, range(1,13))) #cannot give multiplication table because it comes out as a 
+
