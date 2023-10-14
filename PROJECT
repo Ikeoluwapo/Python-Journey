@@ -1,0 +1,159 @@
+#importing libraries to be used
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Create a backup for the csv file. This is very important
+from copy import deepcopy
+df2 = deepcopy(df) #to create a copy that would contain original document
+df2
+
+#upload csv dataset to be read and used
+df = pd.read_csv("electronics.csv")
+
+#call out the first 5 to confirm upload was successful
+df.head()
+
+#next is to understand the data
+
+## EDA
+#### Exploratory Data Analysis
+
+df.shape
+
+#format the number of rows and columns
+print(f" We have {df.shape[0]} number of rows and {df.shape[1]} number of columns")
+
+# check to know where to start if it would be easy or had
+
+#corresponding data types - use df.dtypes or df.info
+#df.info() #df.dtypes would have been better
+df.dtypes
+
+#to get number of null values
+#use isna or isnull then sum to get the number of null values in each column
+df.isnull().sum()
+
+#to drop irrelevant columns
+df.isnull().sum().drop(["year", "user_attr", "split"])
+
+df.drop(["year", "user_attr", "split"], axis = 1, inplace = True) #axis is to emphasize columns and inplace to save it
+df
+
+#to see the columns we have left
+df.columns
+
+#to get unique values in each column
+df. nunique()
+
+#to see unique values in each column e.g model_attr
+df['model_attr'].unique()
+
+df.head()
+
+df['brand'].value_counts()[:5]
+
+#Data Type Conversion
+
+df['timestamp'] = pd.to_datetime(df['timestamp']) #change and save in the exsisting variable for it to appear
+
+df.dtypes
+
+df['brand'] = df['brand'].astype('str') #this is just to convert to another data type. Thats.s what astype does
+#if we run this, there would be no difference because 'brand' is already a string
+
+#to get statistical information about the data
+
+df.describe(include = 'all')#include = 'all' is to show for each and every column; without this, it would just do everything together.
+
+df.describe() #to see for everything that is statistical
+
+## Data Visualization
+
+# Univariate analysis and multivariate analysis
+# Univariate: analysis with one variable(column) while multivariate with multiple variables
+#scatterplot, boxplot, linespace are multivariate
+#histogram, kde plot are univariate
+
+# the distribution of ratings
+df['rating'].value_counts() #to see the number of ratings
+
+print(f"majority of the users gave 5 star ratings with {df['rating'].value_counts()[5]} value and the least rating was {df['rating'].value_counts()[2]}")
+
+#or visualize it
+df['rating'].value_counts().plot(kind = 'bar') #using matplottting already. kind specifies the kind of visualization to use.
+
+#another way to get the chart using seaborn
+sns.countplot(data = df, x = 'rating') #countplot is exclusive for this because we are counting
+plt.show()
+
+#what was the best year of Sales?
+
+df['year'] = df['timestamp'].dt.year #this is to create another column where we can extract the year from the timestamp
+
+df.sample()
+
+df['year'].value_counts().plot(kind = 'bar')
+#first method to easily see while visualizing
+
+plt.figure(figsize = (12, 6))
+sns.countplot(data = df, x = 'year')
+#using seaborn method
+
+plt.xticks(rotation = 'vertical') #time is to prevent it from being clumzy. it could also mean 90 degrees.
+
+plt.show()
+
+#what was the best month of Sales?
+
+df['month'] = df['timestamp'].dt.month #this is to create another column where we can extract the month from the timestamp
+
+df.sample()
+
+df['month'].value_counts().plot(kind = 'bar')
+
+df['category'].groupby() #try this personally
+
+#what products by category were sold the most in January
+plt.xticks(rotation = 90)
+sns.countplot(data = df[df['month'] == 1], x = 'category', order = df['category'].value_counts().index)
+plt.show()
+
+df.shape
+
+#what brand sold the most in 2015?
+df[df['year'] == 2015].groupby(df['brand'])['rating'].count().sort_values(ascending = False)[:9].plot(kind = 'bar')
+
+plt.figure(figsize = (12, 6))
+plt.xticks(rotation = 90)
+sns.countplot(data = df[df['year'] == 2015], x = 'brand', order = df['brand'].value_counts().index)
+plt.show()
+
+print(f"Brand Mpow sold the most in 2016 with a value of {df[df['year'] == 2015].groupby(df['brand'])['rating'].count().sort_values(ascending = True)[-1]}")
+
+#what product sold the most in 2016?
+plt.figure(figsize = (12, 6))
+df[df['year']== 2016].groupby(df['brand'])['rating'].count().sort_values(ascending = True).plot(kind = 'bar')
+
+#what brand sold the most in 2017?
+
+
+
+df[df['year']== 2017].groupby(df['brand'])['rating'].count().sort_values(ascending = True).plot(kind = 'bar')
+
+plt.figure(figsize =(12,6))
+sns.countplot(data = df[df['year'] == 2017], x = 'brand', order = df['brand'].sort_values(ascending = True).value_counts().index)
+plt.xticks(rotation = 90)
+
+##what category sold the most in 2018?
+plt.figure(figsize= (12, 6))
+df[df['year'] == 2018].groupby(['category'])['rating'].count().sort_values(ascending = True).plot(kind = 'bar')
+plt.show()
+
+#How much was sales made in the year 2015?
+plt.figure(figsize= (12, 6))
+df[df['year'] == 2015].groupby(['brand'])['rating'].count().sort_values(ascending = True).plot(kind = 'bar')
+plt.show()
+
