@@ -1,5 +1,5 @@
 
-# Python Project
+# Python Journey
 
 This shows my growth journey in Python, Libraries like Numpy, Pandas, and use of Matplot and Seaborn for visualization.
 
@@ -15,8 +15,17 @@ Hello, I'm Emmanuella Omolade, a data analyst with a passion for transforming ra
 Links and details of dataset are in the readme of the file.
 
 
+## Links to documents used
+
+[Investment](https://github.com/Ikeoluwapo/Python-Journey/blob/c771fdc9bf620165a830fb60eb671cc1fce629fc/investment.csv)
+[Uber](https://github.com/Ikeoluwapo/Python-Journey/blob/ab97b2ead2d57431c67242c66a85da6720dd3399/Uber.csv)
+[Hotel Booking](https://github.com/Ikeoluwapo/Python-Journey/blob/ab97b2ead2d57431c67242c66a85da6720dd3399/hotel_booking_data.csv)
+[Electronics](https://drive.google.com/file/d/1ofs6pP123gmFdemiHPpsHafzwPycooIf/view?usp=drive_link)
+
+
 ## 🛠 Skills
 Excel, PowerBI, SQL, Python, Numpy, Pandas
+
 
 #### Let's Connect
 
