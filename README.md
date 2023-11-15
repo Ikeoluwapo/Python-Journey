@@ -23,8 +23,10 @@ Links and details of dataset are in the readme of the file.
 [Electronics](https://drive.google.com/file/d/1ofs6pP123gmFdemiHPpsHafzwPycooIf/view?usp=drive_link)
 
 
-## 🛠 Skills
-Excel, PowerBI, SQL, Python, Numpy, Pandas
+## 🛠 Skills Demonstrated
+* Aggregate Functions
+* Importation of Libraries
+* Creating od DataFrames and Series
 
 
 #### Let's Connect
